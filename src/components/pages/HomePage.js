@@ -1,46 +1,35 @@
-import React, {Component} from 'react';
-import PropTypes from "prop-types";
-import {connect} from 'react-redux';
-import {bindActionCreators} from "redux";
+import React from 'react';
+import styled from 'styled-components';
 
-import {fetchLocations} from "../../state/actions/LocationActions";
+import LocationPicker from "../location/LocationPicker";
 
-class HomePage extends Component {
-  componentDidMount() {
-    this.props.fetchLocations();
-  }
+const MainContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+`;
 
-  render() {
-    return (
-      <ul>
-        {this.props.locations.map(location => (
-          <li key={location.country}>
-            {location.country}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+const YellowContainer = styled.div`
+  background-color: #f3ce56;
+  padding: 16px 8px;
+`;
 
-HomePage.propTypes = {
-  locations: PropTypes.any,
-  actions: PropTypes.object
+const Title = styled.h1`
+  font-size: 28px;
+  line-height: 32px;
+`;
+
+const HomePage = () => {
+  return (
+    <MainContainer>
+      <YellowContainer>
+        <Title>
+          Let’s find your ideal car
+        </Title>
+        <LocationPicker/>
+      </YellowContainer>
+    </MainContainer>
+  );
 };
 
-function mapStateToProps(state) {
-  return {
-    locations: state.location.locations
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchLocations: bindActionCreators(fetchLocations, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomePage);
+export default HomePage;
