@@ -1,7 +1,8 @@
 import {
   FETCH_LOCATIONS_PENDING,
   FETCH_LOCATIONS_FULFILLED,
-  FETCH_LOCATIONS_REJECTED
+  FETCH_LOCATIONS_REJECTED,
+  CLEAR_LOCATIONS
 } from '../actions/LocationActions';
 
 const initialState = {
@@ -30,6 +31,14 @@ export const LocationsReducer = (state = initialState, action) => {
         failed: false
       };
     case FETCH_LOCATIONS_REJECTED:
+      return {
+        ...state,
+        locations: [],
+        fetching: false,
+        fetched: false,
+        failed: true
+      };
+    case CLEAR_LOCATIONS:
       return {
         ...state,
         locations: [],

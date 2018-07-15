@@ -5,9 +5,22 @@ export const FETCH_LOCATIONS_PENDING = 'FETCH_LOCATIONS_PENDING';
 export const FETCH_LOCATIONS_FULFILLED = 'FETCH_LOCATIONS_FULFILLED';
 export const FETCH_LOCATIONS_REJECTED = 'FETCH_LOCATIONS_REJECTED';
 
-const fetchLocationsAction = () => ({
-  type: FETCH_LOCATIONS,
-  payload: fetchLocations()
-});
+export const CLEAR_LOCATIONS = 'CLEAR_LOCATIONS';
 
-export {fetchLocationsAction as fetchLocations};
+const fetchLocationsAction = (searchText) => {
+  return {
+    type: FETCH_LOCATIONS,
+    payload: fetchLocations(searchText)
+  }
+};
+
+const clearLocations = () => {
+  return {
+    type: CLEAR_LOCATIONS
+  }
+};
+
+export {
+  fetchLocationsAction as fetchLocations,
+  clearLocations
+};
