@@ -12,6 +12,7 @@ https://github.com/facebook/create-react-app
 
 Main Libraries present in the project:
 - React;
+- React Router DOM;
 - Redux;
 - Redux Promise Middleware;
 - Styled Components.
